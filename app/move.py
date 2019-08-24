@@ -63,7 +63,7 @@ def find_heads(game_state, board_matrix):
         if (tot < minsum):
             attackHead = head["body"][0]
             minsum = tot
-
+    print("Coordinates "+ attackHead["x"] + ", " + attackHead['y'])
     find_path(game_state, board_matrix,x,y, attackHead["x"], attackHead['y'])
 
 def find_path(game_state, board_matrix, x, y, targetx, targety):
