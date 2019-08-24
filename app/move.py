@@ -78,7 +78,7 @@ def dodge(game_state, board_matrix, targetx, targety):
     for snake in game_state["board"]["snakes"]:
         snakeBody = snake["body"]
         for part in snakeBody:
-            if part["x"] == targetx and part["y"] == targety
+            if part["x"] == targetx and part["y"] == targety:
                 directions["right"] += 1000
 
 
