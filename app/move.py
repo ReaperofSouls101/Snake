@@ -41,13 +41,13 @@ def find_food(game_state, board_matrix ):
     directions["right"] = 0
     print("Your Coordinates "+ str(x) + ", " + str(y))
     for food in game_state["board"]["food"]:
-        tot = abs(food['x'] - x)
-        tot += abs(food['y'] - y)
+        tot = abs(food["x"] - x)
+        tot += abs(food["y"] - y)
         if (tot < minsum):
             goodfood = food
             minsum = tot
-    print("Target Coordinates "+ str(goodfood["x"]) + ", " + str(goodfood['y']))
-    find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood['y'])
+    print("Target Coordinates "+ str(goodfood["x"]) + ", " + str(goodfood["y"]))
+    find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood["y"])
 
 def find_heads(game_state, board_matrix ):
     print("Attacking Heads")
@@ -61,13 +61,13 @@ def find_heads(game_state, board_matrix ):
     print("Your Coordinates "+ str(x) + ", " + str(y))
 #    attackHead = game_state["board"]["snakes"][0]["body"][0]
     for head in game_state["board"]["snakes"]:
-        tot = abs(head["body"][0]['x'] - x)
-        tot += abs(head["body"][0]['y'] - y)
+        tot = abs(head["body"][0]["x"] - x)
+        tot += abs(head["body"][0]["y"] - y)
         if (tot < minsum) and (tot!=0):
             goodfood = head["body"][0]
             minsum = tot
-    print("Target Coordinates "+ str(goodfood["x"]) + ", " + str(goodfood['y']))
-    find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood['y'])
+    print("Target Coordinates "+ str(goodfood["x"]) + ", " + str(goodfood["y"]))
+    find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood["y"])
 
 def find_path(game_state, board_matrix, x, y, targetx, targety):
     height = game_state["board"]["height"]
