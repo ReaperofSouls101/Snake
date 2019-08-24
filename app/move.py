@@ -104,7 +104,7 @@ def moveAura(yourX, yourY, occupiedSpaces, width, height):
     
     for i in range(len(aura)):
         for j in range(len(aura[i])):
-            if yourX+i-1<0 or yourY+j-1<0 or yourX+1=width or yourY+1=height:
+            if (yourX+i-1<0) or (yourY+j-1<0) or (yourX+1==width) or (yourY+1==height):
                 aura[i][j] = OCCUPIED
             else:
                 aura[i][j] = occupiedSpaces[yourY+i-1][yourX+j-1]
