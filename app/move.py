@@ -48,6 +48,7 @@ def find_food(game_state, board_matrix ):
     find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood['y'])
 
 def find_heads(game_state, board_matrix):
+    print("Attacking Heads")
     minsum = 1000
     y = game_state['you']["body"][0]["y"]
     x = game_state['you']["body"][0]["x"]
