@@ -19,9 +19,9 @@ def calculate_move(new_board, game_state):
     myHealth = game_state['you']["health"]
 #    print("Health Remaining " + str(myHealth))
 #    if (myHealth > 98):
-    find_food(game_state, new_board)
+#    find_food(game_state, new_board)
 #    else:
-#    find_heads(game_state, new_board)
+    find_heads(game_state, new_board)
 
     print(max(directions, key=lambda k: directions[k]))
     print("UP", directions["up"])
