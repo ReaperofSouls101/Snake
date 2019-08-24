@@ -46,7 +46,7 @@ def find_food(game_state, board_matrix ):
         if (tot < minsum):
             goodfood = food
             minsum = tot
-    print("Target Coordinates "+ str(attackHead["x"]) + ", " + str(attackHead['y']))
+    print("Target Coordinates "+ str(goodfood["x"]) + ", " + str(goodfood['y']))
     find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood['y'])
 
 def find_heads(game_state, board_matrix):
