@@ -57,7 +57,7 @@ def find_heads(game_state, board_matrix):
     directions["left"] = 0
     directions["right"] = 0
     
-    for head in game_state["snakes"][0]:
+    for head in game_state["snakes"]["body"][0]:
         tot = abs(head['x'] - x)
         tot += abs(head['y'] - y)
         if (tot < minsum):
