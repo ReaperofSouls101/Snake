@@ -80,7 +80,10 @@ def find_heads(game_state, board_matrix ):
 
 def dodge(game_state, board_matrix, targetx, targety, best_move):
 #    check if snake is there
-    dodgeGrid = [[UNOCCUPIED] for y in range(game_state["board"]["height"])] for x in range(game_state["board"]["width"])]
+    height = game_state["board"]["height"]
+    width = game_state["board"]["width"]
+
+    dodgeGrid = [[UNOCCUPIED] for y in range(height)] for x in range(width)]
     for each in dodgeGrid
     for snake in game_state["board"]["snakes"]:
         snakeBody = snake["body"]
