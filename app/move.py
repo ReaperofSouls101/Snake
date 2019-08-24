@@ -74,7 +74,7 @@ def find_path(game_state, board_matrix, x, y, targetx, targety):
     end = grid.node(targetx, targety)
     finder = AStarFinder(diagonal_movement=DiagonalMovement.never)
     path, runs = finder.find_path(start, end, grid)
-    print("Next Move Coordinates "+ str(path[1][0]) + ", " + str(pathy[1][1]))
+    print("Next Move Coordinates "+ str(path[1][0]) + ", " + str(path[1][1]))
     if (len(path) > 0):
         pathx = path[1][0]
         pathy = path[1][1]
