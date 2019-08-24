@@ -83,7 +83,7 @@ def dodge(game_state, board_matrix, targetx, targety, best_move):
     height = game_state["board"]["height"]
     width = game_state["board"]["width"]
 
-    dodgeGrid = [[UNOCCUPIED] for y in range(height)] for x in range(width)]
+    dodgeGrid = [[UNOCCUPIED for y in range(height)] for x in range(width)]
     for each in dodgeGrid
     for snake in game_state["board"]["snakes"]:
         snakeBody = snake["body"]
