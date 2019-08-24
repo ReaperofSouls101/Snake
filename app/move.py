@@ -27,11 +27,11 @@ def calculate_move(new_board, game_state):
 #    else:
 #    find_heads(game_state, new_board)
 
-#    print(max(directions, key=lambda k: directions[k]))
-#    print("UP", directions["up"])
-#    print("DOWN", directions["down"])
-#    print("LEFT", directions["left"])
-#    print("RIGHT", directions["right"])
+    print(max(directions, key=lambda k: directions[k]))
+    print("UP", directions["up"])
+    print("DOWN", directions["down"])
+    print("LEFT", directions["left"])
+    print("RIGHT", directions["right"])
     return max(directions, key=lambda k: directions[k])
 
 def find_food(game_state, board_matrix ):
