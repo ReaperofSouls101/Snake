@@ -36,8 +36,8 @@ def calculate_move(new_board, game_state):
     return max(directions, key=lambda k: directions[k])
 
 def find_food(game_state, board_matrix ):
-    height = game_state["board"]["height"]
-    width = game_state["board"]["width"]
+    height = 11
+    width = 11
     print("Getting Food")
     minsum = 1000
     y = game_state['you']["body"][0]["y"]
