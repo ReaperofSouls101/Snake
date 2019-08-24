@@ -57,9 +57,9 @@ def find_heads(game_state, board_matrix):
     directions["left"] = 0
     directions["right"] = 0
     
-    for head in game_state["board"]["snakes"]["body"][0]:
-        tot = abs(head['x'] - x)
-        tot += abs(head['y'] - y)
+    for head in game_state["board"]["snakes"]:
+        tot = abs(head["body"][0]['x'] - x)
+        tot += abs(head["body"][0]['y'] - y)
         if (tot < minsum):
             attackHead = food
             minsum = tot
