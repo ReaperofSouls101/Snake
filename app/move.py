@@ -78,7 +78,7 @@ def find_path(game_state, board_matrix, x, y, targetx, targety):
     if (len(path) > 0):
         pathx = path[1][0]
         pathy = path[1][1]
-
+        print("Next Move Coordinates "+ str(pathx) + ", " + str(pathy))
         y = game_state['you']["body"][0]["y"]
         x = game_state['you']["body"][0]["x"]
         # go up
