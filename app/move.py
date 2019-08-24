@@ -19,9 +19,9 @@ def calculate_move(new_board, game_state):
     myHealth = game_state['you']["health"]
 #    print("Health Remaining " + str(myHealth))
 #    if (myHealth > 98):
-#    find_food(game_state, new_board)
+    find_food(game_state, new_board)
 #    else:
-    find_heads(game_state, new_board)
+#    find_heads(game_state, new_board)
 
     print(max(directions, key=lambda k: directions[k]))
     print("UP", directions["up"])
@@ -48,8 +48,11 @@ def find_food(game_state, board_matrix ):
             minsum = tot
     print("Target Coordinates "+ str(goodfood["x"]) + ", " + str(goodfood["y"]))
     find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood["y"])
+    dodge(game_state, board_matrix, goodfood["x"], goodfood["y"])
 
 def find_heads(game_state, board_matrix ):
+    
+#    doesn't work
     print("Attacking Heads")
     minsum = 1000
     y = game_state['you']["body"][0]["y"]
@@ -68,6 +71,17 @@ def find_heads(game_state, board_matrix ):
             minsum = tot
     print("Target Coordinates "+ str(attackHead["x"]) + ", " + str(attackHead["y"]))
     find_path(game_state, board_matrix,x,y, attackHead["x"], attackHead["y"])
+
+
+def dodge(game_state, board_matrix, targetx, targety):
+#    check if snake is there
+    for snake in game_state["board"]["snakes"]:
+        snakeBody = snake["body"]
+        for part in snakeBody:
+            if part["x"] == targetx and part["y"] == targety
+                directions["right"] += 1000
+
+
 
 def find_path(game_state, board_matrix, x, y, targetx, targety):
     height = game_state["board"]["height"]
