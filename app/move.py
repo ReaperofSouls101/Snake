@@ -19,9 +19,9 @@ def calculate_move(new_board, game_state):
     myHealth = game_state['you']["health"]
 #    print("Health Remaining " + str(myHealth))
 #    if (myHealth > 98):
-#        find_food(game_state, new_board)
+    find_food(game_state, new_board)
 #    else:
-    find_heads(game_state, new_board)
+#    find_heads(game_state, new_board)
 
     print(max(directions, key=lambda k: directions[k]))
     print("UP", directions["up"])
@@ -46,7 +46,7 @@ def find_food(game_state, board_matrix ):
         if (tot < minsum):
             goodfood = food
             minsum = tot
-    print("Target Coordinates "+ str(goodfood["x"]) + ", " + str(goodfood["y"]))
+    print("Target Coordinates "+ goodfood["x"] + ", " + goodfood["y"])
     find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood["y"])
 
 def find_heads(game_state, board_matrix ):
