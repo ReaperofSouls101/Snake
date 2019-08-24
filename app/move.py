@@ -31,6 +31,7 @@ def calculate_move(new_board, game_state):
     return max(directions, key=lambda k: directions[k])
 
 def find_food(game_state, board_matrix ):
+    print("Getting Food")
     minsum = 1000
     y = game_state['you']["body"][0]["y"]
     x = game_state['you']["body"][0]["x"]
@@ -45,7 +46,7 @@ def find_food(game_state, board_matrix ):
         if (tot < minsum):
             goodfood = food
             minsum = tot
-
+    print("Target Coordinates "+ str(attackHead["x"]) + ", " + str(attackHead['y']))
     find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood['y'])
 
 def find_heads(game_state, board_matrix):
@@ -65,7 +66,7 @@ def find_heads(game_state, board_matrix):
         if (tot < minsum) and (tot!=0):
             attackHead = head["body"][0]
             minsum = tot
-    print("Coordinates "+ str(attackHead["x"]) + ", " + str(attackHead['y']))
+    print("Target Coordinates "+ str(attackHead["x"]) + ", " + str(attackHead['y']))
     find_path(game_state, board_matrix,x,y, attackHead["x"], attackHead['y'])
 
 def find_path(game_state, board_matrix, x, y, targetx, targety):
