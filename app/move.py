@@ -116,21 +116,21 @@ def ensureBestMove(aura):
             if i==0 and j==0:
                 directions["right"] += 10;
                 directions["down"] += 10;
-            else if i==0 and j==1:
+            elif i==0 and j==1:
                 directions["down"] += 10;
-            else if i==0 and j==2:
+            elif i==0 and j==2:
                 directions["left"] += 10;
                 directions["down"] += 10;
-            else if i==1 and j==0:
+            elif i==1 and j==0:
                 directions["right"] += 10;
-            else if i==1 and j==2:
+            elif i==1 and j==2:
                 directions["left"] += 10;
-            else if i==2 and j==0:
+            elif i==2 and j==0:
                 directions["right"] += 10;
                 directions["up"] += 10;
-            else if i==2 and j==0:
+            elif i==2 and j==0:
                 directions["up"] += 10;
-            else if i==2 and j==0:
+            elif i==2 and j==0:
                 directions["left"] += 10;
                 directions["up"] += 10;
 
