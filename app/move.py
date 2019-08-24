@@ -118,26 +118,27 @@ def moveAura(yourX, yourY, occupiedSpaces, height, width):
 def ensureBestMove(aura):
     for i in range(len(aura)):
         for j in range(len(aura[i])):
-            if i==0 and j==0:
-                directions["right"] += 10;
-                directions["down"] += 10;
-            elif i==0 and j==1:
-                directions["down"] += 10;
-            elif i==0 and j==2:
-                directions["left"] += 10;
-                directions["down"] += 10;
-            elif i==1 and j==0:
-                directions["right"] += 10;
-            elif i==1 and j==2:
-                directions["left"] += 10;
-            elif i==2 and j==0:
-                directions["right"] += 10;
-                directions["up"] += 10;
-            elif i==2 and j==0:
-                directions["up"] += 10;
-            elif i==2 and j==0:
-                directions["left"] += 10;
-                directions["up"] += 10;
+            if aura[i][j] == OCCUPIED;
+                if i==0 and j==0:
+                    directions["right"] += 10;
+                    directions["down"] += 10;
+                elif i==0 and j==1:
+                    directions["down"] += 10;
+                elif i==0 and j==2:
+                    directions["left"] += 10;
+                    directions["down"] += 10;
+                elif i==1 and j==0:
+                    directions["right"] += 10;
+                elif i==1 and j==2:
+                    directions["left"] += 10;
+                elif i==2 and j==0:
+                    directions["right"] += 10;
+                    directions["up"] += 10;
+                elif i==2 and j==0:
+                    directions["up"] += 10;
+                elif i==2 and j==0:
+                    directions["left"] += 10;
+                    directions["up"] += 10;
 
 
 def find_path(game_state, board_matrix, x, y, targetx, targety):
