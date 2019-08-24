@@ -101,7 +101,7 @@ def moveAura(yourX, yourY, occupiedSpaces):
 
     for i in range(len(aura)):
         for j in range(len(aura[i])):
-            aura[i][j] = occupiedSpaces[x+i+1][y+j-1]
+            aura[i][j] = occupiedSpaces[yourX+i+1][yourY+j-1]
 
     return aura
 
