@@ -50,8 +50,8 @@ def find_food(game_state, board_matrix ):
             goodfood = food
             minsum = tot
     print("Target Coordinates "+ str(goodfood["x"]) + ", " + str(goodfood["y"]))
-    find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood["y"])
-    dodge(game_state, board_matrix, goodfood["x"], goodfood["y"])
+    best_move= find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood["y"])
+    dodge(game_state, board_matrix, goodfood["x"], goodfood["y"], best_move)
 
 def find_heads(game_state, board_matrix ):
     
@@ -76,13 +76,13 @@ def find_heads(game_state, board_matrix ):
     find_path(game_state, board_matrix,x,y, attackHead["x"], attackHead["y"])
 
 
-def dodge(game_state, board_matrix, targetx, targety):
+def dodge(game_state, board_matrix, targetx, targety, best_move):
 #    check if snake is there
     for snake in game_state["board"]["snakes"]:
         snakeBody = snake["body"]
         for part in snakeBody:
             if part["x"] == targetx and part["y"] == targety:
-                directions["right"] += 1000
+                directions[best_move] -= 1000
 
 
 
@@ -103,16 +103,16 @@ def find_path(game_state, board_matrix, x, y, targetx, targety):
         # go up
         if ((y - 1) == pathy) and (x == pathx):
             directions["up"] += 20
-            print("Pick: UP")
+            return "up"
         # go down
         if ((y + 1) == pathy) and (x == pathx):
             directions["down"] += 20
-            print("Pick: down")
+            return "down"
         # go left
         if ((x - 1) == pathx) and (y == pathy):
             directions["left"] += 20
-            print("Pick: left")
+            return "left"
         # go right
         if ((x + 1) == pathx) and (y == pathy):
             directions["right"] += 20
-            print("Pick: right")
+            return "right"
