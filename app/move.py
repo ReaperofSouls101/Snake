@@ -16,6 +16,8 @@ HEALTHLIM = 100
 game_state = ""
 directions = {'up': 0, 'down': 0, 'left': 0, 'right': 0}
 goodfood = []
+height = game_state["board"]["height"]
+width = game_state["board"]["width"]
 
 
 def calculate_move(new_board, game_state):
@@ -85,8 +87,6 @@ def find_food(game_state, board_matrix ):
 
 def dodgeGridCreation(game_state, board_matrix, targetx, targety, best_move):
 #    check if snake is there
-    height = game_state["board"]["height"]
-    width = game_state["board"]["width"]
 
     dodgeGrid = [[UNOCCUPIED for y in range(height)] for x in range(width)]
     
@@ -99,9 +99,6 @@ def dodgeGridCreation(game_state, board_matrix, targetx, targety, best_move):
 
 def moveAura(yourX, yourY, occupiedSpaces):
     aura = [[None for y in range(3)] for x in range(3)]
-
-    height = game_state["board"]["height"]
-    width = game_state["board"]["width"]
     
     for i in range(len(aura)):
         for j in range(len(aura[i])):
