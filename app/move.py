@@ -52,33 +52,35 @@ def find_food(game_state, board_matrix ):
     print("Target Coordinates "+ str(goodfood["x"]) + ", " + str(goodfood["y"]))
     best_move= find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood["y"])
     print("Best Move before dodge "+best_move)
-    dodgeGrid = dodge(game_state, board_matrix, goodfood["x"], goodfood["y"], best_move)
+    dodgeGrid = dodgeGridCreation(game_state, board_matrix, goodfood["x"], goodfood["y"], best_move)
+    threeByThree = moveAura(x, y, dodgeGrid)
     print(np.matrix(dodgeGrid))
+    print(np.matrix(threeByThree))
 
-def find_heads(game_state, board_matrix ):
-    
-#    doesn't work
-    print("Attacking Heads")
-    minsum = 1000
-    y = game_state['you']["body"][0]["y"]
-    x = game_state['you']["body"][0]["x"]
-    directions["up"] = 0
-    directions["down"] = 0
-    directions["left"] = 0
-    directions["right"] = 0
-    print("Your Coordinates "+ str(x) + ", " + str(y))
-#    attackHead = game_state["board"]["snakes"][0]["body"][0]
-    for head in game_state["board"]["snakes"]:
-        tot = abs(head["body"][0]["x"] - x)
-        tot += abs(head["body"][0]["y"] - y)
-        if tot < minsum and tot > 2:
-            attackHead = head["body"][0]
-            minsum = tot
-    print("Target Coordinates "+ str(attackHead["x"]) + ", " + str(attackHead["y"]))
-    find_path(game_state, board_matrix,x,y, attackHead["x"], attackHead["y"])
+#def find_heads(game_state, board_matrix ):
+#
+##    doesn't work
+#    print("Attacking Heads")
+#    minsum = 1000
+#    y = game_state['you']["body"][0]["y"]
+#    x = game_state['you']["body"][0]["x"]
+#    directions["up"] = 0
+#    directions["down"] = 0
+#    directions["left"] = 0
+#    directions["right"] = 0
+#    print("Your Coordinates "+ str(x) + ", " + str(y))
+##    attackHead = game_state["board"]["snakes"][0]["body"][0]
+#    for head in game_state["board"]["snakes"]:
+#        tot = abs(head["body"][0]["x"] - x)
+#        tot += abs(head["body"][0]["y"] - y)
+#        if tot < minsum and tot > 2:
+#            attackHead = head["body"][0]
+#            minsum = tot
+#    print("Target Coordinates "+ str(attackHead["x"]) + ", " + str(attackHead["y"]))
+#    find_path(game_state, board_matrix,x,y, attackHead["x"], attackHead["y"])
 
 
-def dodge(game_state, board_matrix, targetx, targety, best_move):
+def dodgeGridCreation(game_state, board_matrix, targetx, targety, best_move):
 #    check if snake is there
     height = game_state["board"]["height"]
     width = game_state["board"]["width"]
@@ -94,6 +96,14 @@ def dodge(game_state, board_matrix, targetx, targety, best_move):
                                  
     return dodgeGrid
 
+def moveAura(yourX, yourY, occupiedSpaces)
+    aura = [[None for y in range(3)] for x in range(3)]
+
+    for i in range(len(aura)):
+        for j in range(len(aura[i])):
+            aura[i][j] = occupiedSpaces[x-i][y-j]
+
+    return aura
 
 
 def find_path(game_state, board_matrix, x, y, targetx, targety):
