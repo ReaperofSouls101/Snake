@@ -54,6 +54,7 @@ def find_food(game_state, board_matrix ):
     print("Best Move before dodge "+best_move)
     dodgeGrid = dodgeGridCreation(game_state, board_matrix, goodfood["x"], goodfood["y"], best_move)
     threeByThree = moveAura(x, y, dodgeGrid)
+    remakeMove = ensureBestMove(threeByThree)
     print(np.matrix(dodgeGrid))
     print(np.matrix(threeByThree))
 
@@ -101,12 +102,37 @@ def moveAura(yourX, yourY, occupiedSpaces):
 
     for i in range(len(aura)):
         for j in range(len(aura[i])):
-            if yourX<=1 or yourY<=1:
+            if yourX<=0 or yourY<=0:
                 aura[i][j] = OCCUPIED
             else:
                 aura[i][j] = occupiedSpaces[yourY+i-1][yourX+j-1]
 
     return aura
+
+
+def ensureBestMove(aura):
+    for i in range(len(aura)):
+        for j in range(len(aura[i])):
+            if i==0 and j==0:
+                directions["right"] += 10;
+                directions["down"] += 10;
+            else if i==0 and j==1:
+                directions["down"] += 10;
+            else if i==0 and j==2:
+                directions["left"] += 10;
+                directions["down"] += 10;
+            else if i==1 and j==0:
+                directions["right"] += 10;
+            else if i==1 and j==2:
+                directions["left"] += 10;
+            else if i==2 and j==0:
+                directions["right"] += 10;
+                directions["up"] += 10;
+            else if i==2 and j==0:
+                directions["up"] += 10;
+            else if i==2 and j==0:
+                directions["left"] += 10;
+                directions["up"] += 10;
 
 
 def find_path(game_state, board_matrix, x, y, targetx, targety):
