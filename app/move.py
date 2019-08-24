@@ -96,7 +96,7 @@ def dodgeGridCreation(game_state, board_matrix, targetx, targety, best_move):
                                  
     return dodgeGrid
 
-def moveAura(yourX, yourY, occupiedSpaces)
+def moveAura(yourX, yourY, occupiedSpaces):
     aura = [[None for y in range(3)] for x in range(3)]
 
     for i in range(len(aura)):
