@@ -17,10 +17,11 @@ game_state = ""
 directions = {'up': 0, 'down': 0, 'left': 0, 'right': 0}
 def calculate_move(new_board, game_state):
     myHealth = game_state['you']["health"]
-        #if (myHealth < 50):
-        #    find_food(game_state, new_board)
-        # else:
-    find_heads(game_state, new_board)
+    print("Health Remaining" + str(myHealth))
+    if (myHealth > 90):
+        find_food(game_state, new_board)
+    else:
+        find_heads(game_state, new_board)
 
     print(max(directions, key=lambda k: directions[k]))
     print("UP", directions["up"])
@@ -37,7 +38,7 @@ def find_food(game_state, board_matrix ):
     directions["down"] = 0
     directions["left"] = 0
     directions["right"] = 0
-
+    print("Your Coordinates "+ str(x) + ", " + str(y))
     for food in game_state["board"]["food"]:
         tot = abs(food['x'] - x)
         tot += abs(food['y'] - y)
