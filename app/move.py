@@ -15,7 +15,7 @@ TAIL       = 4
 HEALTHLIM = 100
 game_state = ""
 directions = {'up': 0, 'down': 0, 'left': 0, 'right': 0}
-goodfood = ""
+goodfood = []
 
 
 def calculate_move(new_board, game_state):
@@ -51,6 +51,7 @@ def find_food(game_state, board_matrix ):
             minsum = tot
     print("Target Coordinates "+ str(goodfood["x"]) + ", " + str(goodfood["y"]))
     best_move= find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood["y"])
+    print("Best Move before dodge "+best_move)
     dodge(game_state, board_matrix, goodfood["x"], goodfood["y"], best_move)
 
 def find_heads(game_state, board_matrix ):
