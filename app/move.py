@@ -16,7 +16,12 @@ HEALTHLIM = 100
 game_state = ""
 directions = {'up': 0, 'down': 0, 'left': 0, 'right': 0}
 def calculate_move(new_board, game_state):
-    find_food(game_state, new_board)
+    myHealth =game_state['you']["health"]
+    if (myHealth < 50):
+        find_food(game_state, new_board)
+    else:
+        find_heads(game_state, new_board)
+
     print(max(directions, key=lambda k: directions[k]))
     print("UP", directions["up"])
     print("DOWN", directions["down"])
@@ -42,12 +47,29 @@ def find_food(game_state, board_matrix ):
 
     find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood['y'])
 
+def find_heads(game_state, board_matrix):
+    minsum = 1000
+    y = game_state['you']["body"][0]["y"]
+    x = game_state['you']["body"][0]["x"]
+    directions["up"] = 0
+    directions["down"] = 0
+    directions["left"] = 0
+    directions["right"] = 0
+    
+    for head in game_state["board"]["snakes"][0]:
+        tot = abs(head['x'] - x)
+        tot += abs(head['y'] - y)
+        if (tot < minsum):
+            attackHead = food
+            minsum = tot
 
-def find_path(game_state, board_matrix, x, y, foodx, foody):
+    find_path(game_state, board_matrix,x,y, attackHead["x"], attackHead['y'])
+
+def find_path(game_state, board_matrix, x, y, targetx, targety):
     height = game_state["board"]["height"]
     grid = Grid(width=height, height=height, matrix=board_matrix)
     start = grid.node(x, y)
-    end = grid.node(foodx, foody)
+    end = grid.node(targetx, targety)
     finder = AStarFinder(diagonal_movement=DiagonalMovement.never)
     path, runs = finder.find_path(start, end, grid)
 
