@@ -90,7 +90,7 @@ def dodgeGridCreation(game_state, board_matrix, targetx, targety, best_move):
     for snake in game_state["board"]["snakes"]:
         snakeBody = snake["body"]
         for part in snakeBody:
-            dodgeGrid[part["x"]][part["y"]] = OCCUPIED
+            dodgeGrid[part["y"]][part["x"]] = OCCUPIED
             if part["x"] == targetx and part["y"] == targety:
                 directions[best_move] -= 1000
                                  
@@ -101,7 +101,10 @@ def moveAura(yourX, yourY, occupiedSpaces):
 
     for i in range(len(aura)):
         for j in range(len(aura[i])):
-            aura[i][j] = occupiedSpaces[yourY+i-1][yourX+j-1]
+            if yourX<=1 or yourY<=1:
+                aura[i][j] = OCCUPIED
+            else:
+                aura[i][j] = occupiedSpaces[yourY-i+1][yourX+j-1]
 
     return aura
 
