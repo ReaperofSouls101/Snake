@@ -52,7 +52,8 @@ def find_food(game_state, board_matrix ):
     print("Target Coordinates "+ str(goodfood["x"]) + ", " + str(goodfood["y"]))
     best_move= find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood["y"])
     print("Best Move before dodge "+best_move)
-    dodge(game_state, board_matrix, goodfood["x"], goodfood["y"], best_move)
+    dodgeGrid = dodge(game_state, board_matrix, goodfood["x"], goodfood["y"], best_move)
+    print(np.matrix(dodgeGrid))
 
 def find_heads(game_state, board_matrix ):
     
@@ -79,11 +80,16 @@ def find_heads(game_state, board_matrix ):
 
 def dodge(game_state, board_matrix, targetx, targety, best_move):
 #    check if snake is there
+    dodgeGrid = [[UNOCCUPIED] for y in range(game_state["board"]["height"])] for x in range(game_state["board"]["width"])]
+    for each in dodgeGrid
     for snake in game_state["board"]["snakes"]:
         snakeBody = snake["body"]
         for part in snakeBody:
+            dodgeGrid[part["x"]][[part["y"]] = OCCUPIED
             if part["x"] == targetx and part["y"] == targety:
                 directions[best_move] -= 1000
+                                 
+    return dodgeGrid
 
 
 
