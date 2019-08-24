@@ -88,7 +88,7 @@ def dodge(game_state, board_matrix, targetx, targety, best_move):
     for snake in game_state["board"]["snakes"]:
         snakeBody = snake["body"]
         for part in snakeBody:
-            dodgeGrid[part["x"]][[part["y"]] = OCCUPIED
+            dodgeGrid[part["x"]][part["y"]] = OCCUPIED
             if part["x"] == targetx and part["y"] == targety:
                 directions[best_move] -= 1000
                                  
