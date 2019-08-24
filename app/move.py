@@ -63,7 +63,7 @@ def find_heads(game_state, board_matrix ):
     for head in game_state["board"]["snakes"]:
         tot = abs(head["body"][0]["x"] - x)
         tot += abs(head["body"][0]["y"] - y)
-        if tot < minsum and tot > 5:
+        if tot < minsum and tot > 0:
             attackHead = head["body"][0]
             minsum = tot
     print("Target Coordinates "+ str(attackHead["x"]) + ", " + str(attackHead["y"]))
