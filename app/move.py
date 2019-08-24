@@ -16,11 +16,11 @@ HEALTHLIM = 100
 game_state = ""
 directions = {'up': 0, 'down': 0, 'left': 0, 'right': 0}
 goodfood = []
-height = game_state["board"]["height"]
-width = game_state["board"]["width"]
+
 
 
 def calculate_move(new_board, game_state):
+
     myHealth = game_state['you']["health"]
 #    print("Health Remaining " + str(myHealth))
 #    if (myHealth > 98):
@@ -36,6 +36,8 @@ def calculate_move(new_board, game_state):
     return max(directions, key=lambda k: directions[k])
 
 def find_food(game_state, board_matrix ):
+    height = game_state["board"]["height"]
+    width = game_state["board"]["width"]
     print("Getting Food")
     minsum = 1000
     y = game_state['you']["body"][0]["y"]
@@ -54,8 +56,8 @@ def find_food(game_state, board_matrix ):
     print("Target Coordinates "+ str(goodfood["x"]) + ", " + str(goodfood["y"]))
     best_move= find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood["y"])
     print("Best Move before dodge "+best_move)
-    dodgeGrid = dodgeGridCreation(game_state, board_matrix, goodfood["x"], goodfood["y"], best_move)
-    threeByThree = moveAura(x, y, dodgeGrid)
+    dodgeGrid = dodgeGridCreation(game_state, board_matrix, goodfood["x"], goodfood["y"], width, height)
+    threeByThree = moveAura(x, y, dodgeGrid, width, height)
     remakeMove = ensureBestMove(threeByThree)
 
     print(np.matrix(dodgeGrid))
@@ -85,7 +87,7 @@ def find_food(game_state, board_matrix ):
 #    find_path(game_state, board_matrix,x,y, attackHead["x"], attackHead["y"])
 
 
-def dodgeGridCreation(game_state, board_matrix, targetx, targety, best_move):
+def dodgeGridCreation(game_state, board_matrix, targetx, targety, width, height):
 #    check if snake is there
 
     dodgeGrid = [[UNOCCUPIED for y in range(height)] for x in range(width)]
@@ -97,7 +99,7 @@ def dodgeGridCreation(game_state, board_matrix, targetx, targety, best_move):
 
     return dodgeGrid
 
-def moveAura(yourX, yourY, occupiedSpaces):
+def moveAura(yourX, yourY, occupiedSpaces, width, height):
     aura = [[None for y in range(3)] for x in range(3)]
     
     for i in range(len(aura)):
