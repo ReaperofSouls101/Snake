@@ -61,7 +61,7 @@ def find_heads(game_state, board_matrix):
         tot = abs(head["body"][0]['x'] - x)
         tot += abs(head["body"][0]['y'] - y)
         if (tot < minsum):
-            attackHead = head
+            attackHead = head["body"][0]
             minsum = tot
 
     find_path(game_state, board_matrix,x,y, attackHead["x"], attackHead['y'])
