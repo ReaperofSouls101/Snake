@@ -53,7 +53,7 @@ def find_food(game_state, board_matrix ):
     best_move= find_path(game_state, board_matrix,x,y, goodfood["x"], goodfood["y"])
     print("Best Move before dodge "+best_move)
     dodgeGrid = dodgeGridCreation(game_state, board_matrix, goodfood["x"], goodfood["y"], best_move)
-    threeByThree = moveAura(x, y, dodgeGrid, height, width)
+    threeByThree = moveAura(x, y, dodgeGrid)
     remakeMove = ensureBestMove(threeByThree)
 
     print(np.matrix(dodgeGrid))
@@ -97,7 +97,7 @@ def dodgeGridCreation(game_state, board_matrix, targetx, targety, best_move):
 
     return dodgeGrid
 
-def moveAura(yourX, yourY, occupiedSpaces, height, width):
+def moveAura(yourX, yourY, occupiedSpaces):
     aura = [[None for y in range(3)] for x in range(3)]
 
     height = game_state["board"]["height"]
