@@ -17,7 +17,7 @@ game_state = ""
 directions = {'up': 0, 'down': 0, 'left': 0, 'right': 0}
 def calculate_move(new_board, game_state):
     myHealth = game_state['you']["health"]
-    print("Health Remaining" + str(myHealth))
+    print("Health Remaining " + str(myHealth))
     if (myHealth > 98):
         find_food(game_state, new_board)
     else:
