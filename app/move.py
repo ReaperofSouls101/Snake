@@ -15,6 +15,9 @@ TAIL       = 4
 HEALTHLIM = 100
 game_state = ""
 directions = {'up': 0, 'down': 0, 'left': 0, 'right': 0}
+goodfood = ""
+
+
 def calculate_move(new_board, game_state):
     myHealth = game_state['you']["health"]
 #    print("Health Remaining " + str(myHealth))
